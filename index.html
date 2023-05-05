@@ -7,21 +7,54 @@
   <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    const root = document.querySelector("#root");
     function App() {
-      const [counter, setCounter] = React.useState(0);
+      //counter = counter +1
+      // ReactDOM.render(<App />, root);
+      //직접 할당 : setState(state + 1); 관련 없는 값을 줄때
+      //함수를 할당 : setState((state) => state + 1); 조금의 변화를 주어서 값을 줄때
+      const [amount, setAmount] = React.useState(0);
+      const [flipped, setFlipped] = React.useState(false);
+      const onChange = (evnet) => {
+        setAmount(event.target.value);
+      };
       const onClick = () => {
-        setCounter(counter + 1);
-        //counter = counter +1
-        // ReactDOM.render(<App />, root);
+        setAmount(0);
+      };
+      const onFlip = () => {
+        onClick();
+        setFlipped((curret) => !curret);
       };
       return (
         <div>
-          <h3>Total clicks: {counter}</h3>
-          <button onClick={onClick}>Click me</button>
+          <h3>Super Converter</h3>
+          <div>
+            <label htmlFor="min">Minutes</label>
+            <input
+              value={flipped ? amount * 60 : amount}
+              id="min"
+              type="number"
+              placeholder="Minutes"
+              onChange={onChange}
+              disabled={flipped}
+            ></input>
+          </div>
+          <div>
+            <label htmlFor="hours">Hours</label>
+            <input
+              value={flipped ? amount : Math.round(amount / 60)}
+              id="hours"
+              type="number"
+              placeholder="Hours"
+              disabled={!flipped}
+              onChange={onChange}
+            ></input>
+          </div>
+          <button onClick={onClick}>reset</button>
+          <button onClick={onFlip}>flip</button>
         </div>
       );
     }
+    const root = document.querySelector("#root");
     ReactDOM.render(<App />, root);
   </script>
 </html>
