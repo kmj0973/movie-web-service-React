@@ -8,35 +8,34 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script type="text/babel">
-    function Btn({txt,changeValue,fontSize = 6}) {
-       return (
+    function Btn({ txt, changeValue, fontSize = 6 }) {
+      return (
         <button
           style={{
-            backgroundColor:"tomato",
-            border:0,
-            borderRadius:10,
-            color:"white",
-            padding:"10px 20px",
+            backgroundColor: "tomato",
+            border: 0,
+            borderRadius: 10,
+            color: "white",
+            padding: "10px 20px",
             fontSize,
-        }}
+          }}
           onClick={changeValue}
         >
           {txt}
         </button>
-       )
+      );
     }
     const MemoBtn = React.memo(Btn);
     MemoBtn.propTypes = {
-      txt : PropTypes.string.isRequired,
-      fontSize:PropTypes.number,
-
+      txt: PropTypes.string.isRequired,
+      fontSize: PropTypes.number,
     };
     function App() {
       const [value, setValue] = React.useState("Save Changes");
       const changeValue = () => setValue("Revert Changes");
       return (
         <div>
-          <MemoBtn txt={value} changeValue={changeValue} fontSize={18}/>
+          <MemoBtn txt={value} changeValue={changeValue} fontSize={18} />
           <MemoBtn txt="Continue" />
         </div>
       );
