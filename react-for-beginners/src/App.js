@@ -3,29 +3,58 @@ import Button from "./Button";
 import styles from "./App.module.css";
 
 function App() {
-  const [todo, setTodo] = useState("");
-  const [todos, setTodos] = useState([]);
-  const onChange =(event) => setTodo(event.target.value);
-  const onSubmit =(event) => {
-    event.preventDefault()
-    if(todo === "") {
-      return;
-    }
-    setTodos(currentArray => [todo, ...currentArray]);
-    setTodo("");
-  }
-  console.log(todos);
+  const [loading, setLoading] = useState(true);
+  const [coins, setCoins] = useState([]);
+  const [dollars, setDollars] = useState(0);
+  const [check, setCheck] = useState(true);
+  const [coin1, setCoin] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.coinpaprika.com/v1/tickers")
+      .then((response) => response.json())
+      .then((json) => {
+        setCoins(json);
+        setLoading(false);
+      });
+  }, []);
+  const onChange = (event) => {
+    setDollars(event.target.value);
+    setCheck(false);
+  };
+
+  const onChoose = (event) => {
+    setCoin(coins.filter((current, index) => event.target.value == index));
+    console.log(event.target.value);
+  };
+
   return (
     <div>
-      <h1>My To Dos {todos.length}</h1>
-      <form onSubmit={onSubmit}>
-        <input onChange={onChange} value={todo} type="text" placeholder="Write your to do..."></input>
-        <button>Add To Do</button>
-      </form>
-      <hr/>
-      <ul>
-      {todos.map((item, index) => <li key={index}>{item}</li>)}
-      </ul>
+      <h1>The Coins! ({coins.length})</h1>
+      <input
+        type="text"
+        placeholder="Write your dollar"
+        value={dollars}
+        onChange={onChange}
+      ></input>
+      {loading ? (
+        <strong>Loading...</strong>
+      ) : (
+        <select onChange={onChoose}>
+          <option>==== choose ====</option>
+          {coins.map((coin, index) => (
+            <option key={index} value={index}>
+              {coin.name} ({coin.symbol}): {coin.quotes.USD.price}
+            </option>
+          ))}
+        </select>
+      )}
+
+      <h1>
+        You can buy{" "}
+        <div>
+          {check ? "Write your dollars" : dollars / coin1[0].quotes.USD.price}
+        </div>
+      </h1>
     </div>
   );
 }
