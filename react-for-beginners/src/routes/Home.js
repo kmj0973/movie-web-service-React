@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import Movie from "./Movie";
-function App() {
-  const [loading, setLoading] = useState(true);
+import Movie from "./compoenets/Movie";
+
+
+function Home(){
+    const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const getMovies = async () => {
     const response = await fetch(
@@ -35,4 +37,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
