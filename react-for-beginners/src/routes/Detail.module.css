@@ -1,0 +1,21 @@
+.img {
+  position: relative;
+  top: 70px;
+  box-shadow: 5px 5px 5px 2px rgb(194, 194, 194);
+}
+.desc {
+  position: absolute;
+  display: inline-block;
+  width: 320px;
+  height: 500px;
+  margin: 30px;
+  top: 150px;
+  padding: 10px;
+  background-color: rgb(10, 10, 10, 0.8);
+  color: rgb(231, 230, 230);
+}
+.body {
+  position: absolute;
+  background-size: cover;
+  text-align: center;
+}

@@ -7,7 +7,7 @@ function Movie({ id, mediumCoverImage, title, summary, genres }) {
       <h2>
         <Link to={`/movie/${id}`}>{title}</Link>
       </h2>
-      <p>{summary.length > 235 ? `${summary.slice(0,235)}...`: summary }</p>
+      <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary}</p>
       <ul>
         {genres.map((g) => {
           <li key={g}>{g}</li>;
@@ -17,7 +17,7 @@ function Movie({ id, mediumCoverImage, title, summary, genres }) {
   );
 }
 
-Movie.PropTypes = {
+Movie.propTypes = {
   id: PropTypes.number.isRequired,
   mediumCoverImage: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
