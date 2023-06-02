@@ -21,15 +21,13 @@ function Detail() {
       className={styles.body}
       style={{
         backgroundImage: `url(${movie.background_image_original})`,
-        width: "100vw",
-        height: "100vh",
       }}
     >
-      <div>
+      <div className={styles.grid}>
         <img
-          className={styles.img}
           src={movie.large_cover_image}
           alt={movie.title}
+          className={styles.img}
         />
         <div className={styles.desc}>
           <h1>{movie.title}</h1>
