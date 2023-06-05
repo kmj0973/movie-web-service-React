@@ -36,8 +36,8 @@ function Detail() {
           </button>
           <p>
             {movie.description_intro != undefined
-              ? movie.description_intro.length > 600
-                ? movie.description_intro.slice(0, 600) + "..."
+              ? movie.description_intro.length > 450
+                ? movie.description_intro.slice(0, 450) + "..."
                 : movie.description_intro
               : null}
           </p>
