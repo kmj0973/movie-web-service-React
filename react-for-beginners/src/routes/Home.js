@@ -24,7 +24,7 @@ function Home() {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div class={styles.grid}>
+        <div className={styles.grid}>
           {movies.map((movie) => (
             <Movie
               key={movie.id}
