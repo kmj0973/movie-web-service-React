@@ -1,66 +1,82 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    text-align: center;
+  box-sizing: border-box;
+  margin: 0;
+  text-align: center;
+  overflow: auto;
+  font-family: "Roboto Mono", monospace;
 }
 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: antiquewhite;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: antiquewhite;
+  padding: 8px 24px;
 }
 .header__title {
-    padding: 10px;
+  font-size: 24px;
 }
 .header__options {
-    display: flex;
-    list-style: none;
-    justify-content: space-evenly;
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+  padding-left: 0px;
 }
 .header__options li {
-    padding: 30px;
+  padding: 8px 12px;
+}
+.header__options li:hover {
+  background-color: rgb(253, 147, 60);
+  border-radius: 4px;
 }
 .header__about_us {
-    display: flex;
-    margin: 20px;
-    list-style: none;
-    justify-content: space-evenly;
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
 }
 .header__about_us li {
-    padding: 5px;
+  padding: 8px 12px;
 }
 .header__menu {
-    display: none;
-    position: absolute;
-    padding: 10px;
-    right: 32px;
-}
-.none {
-    display: none;
+  display: none;
+  position: absolute;
+  right: 40px;
+  font-size: 24px;
 }
 @media (max-width: 800px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 8px 24px;
-    }
-    .header__options {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-    .header__options li {
-        width: 100%;
-    }
-    .header__about_us {
-        justify-content: center;
-        width: 100%;
-    }
-    .header__menu {
-        display: block;
-    }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+  }
+  .header__options {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .header__options li {
+    width: 100%;
+    text-align: center;
+  }
+  .header__about_us {
+    display: none;
+    justify-content: center;
+    width: 100%;
+  }
+  .header__menu {
+    display: block;
+  }
+  .flex {
+    display: flex;
+  }
 }
+/* @media screen and (min-width: 801px) {
+  .header__about_us,
+  .header__options {
+    display: flex;
+  }
+} */
